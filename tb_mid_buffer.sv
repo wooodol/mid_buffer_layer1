@@ -4,6 +4,7 @@ module tb();
 reg rst_n;
 reg clk;
 reg valid_in;
+wire valid_out;
 wire [31:0] channel1 [0:33][0:25];
 wire [31:0] channel2 [0:33][0:25];
 wire [31:0] channel3 [0:33][0:25];
@@ -149,7 +150,8 @@ channel_buffer uut(
 
 .m(m),
 .y(y),
-.state(state)
+.state(state),
+.valid_out(valid_out)
 );
 integer j,o;
     
@@ -418,6 +420,10 @@ end
 
 initial begin
     $monitor("m:%h|j:%h|state:%b",m,j,state);
+end
+
+initial begin
+    $monitor("valid_out:%b", valid_out);
 end
 
 
