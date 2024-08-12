@@ -160,19 +160,19 @@ initial begin
 end
 
 initial begin
+    valid_in = 0;
     rst_n = 0;
-    #20
+    #25
     rst_n = 1;
-    valid_in <= 1;
+    #10
+    valid_in = 1;
+
 end
 
-initial begin
-valid_in = 0;
-end
 
 
-
-always @(negedge clk && (valid_in == 1)) begin
+always @(posedge clk) begin
+    if(valid_in == 1) begin
         for(i = 0; i<32; i = i + 1) begin
             data_in[i] = $urandom; 
         end
@@ -182,7 +182,7 @@ always @(negedge clk && (valid_in == 1)) begin
             o <= 0;
         end                 
     end
-
+end
 
 
 initial begin
