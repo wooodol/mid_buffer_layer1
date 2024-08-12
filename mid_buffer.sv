@@ -10,7 +10,7 @@ DATA_BITS = 32
     input rst_n,
     input valid_in,
     input [31:0] data_in[0:CHANNELS-1],
-    output [31:0] output1 [0:1][0:1],
+  
     output reg [31:0] channel1 [0:IMAGE_HEIGHT-1][0:IMAGE_WIDTH-1],
 output reg [31:0] channel2 [0:IMAGE_HEIGHT-1][0:IMAGE_WIDTH-1],
 output reg [31:0] channel3 [0:IMAGE_HEIGHT-1][0:IMAGE_WIDTH-1],
@@ -560,10 +560,10 @@ always @(posedge clk or negedge rst_n) begin
             channel32[i][j] <= data_in[31];
             j <= j + 1;  
                
-            if(j == 25) begin
+            if(j == IMAGE_WIDTH-1) begin
                 i <= i + 1;
                 j <= 0;
-                if (i == 33) begin
+                if (i == IMAGE_HEIGHT-1) begin
                     i <= 0;
                     j <= 0;
                     state <= 1;
@@ -578,10 +578,10 @@ if(state == 1) begin
     data_out_1[1][1] <= channel1[k+1][t+1];
     t <= t + 2;
     m <= m + 1;
-    if(t == 24) begin
+    if(t == IMAGE_WIDTH-2) begin
         k <= k + 2;
         t <= 0;
-        if(k == 32) begin
+        if(k == IMAGE_HEIGHT-2) begin
             k <= 0;
             t <= 0;
             m <= 0;
@@ -599,10 +599,10 @@ if(state == 1) begin
     data_out_2[1][1] <= channel2[k_2+1][t_2+1];
     t_2 <= t_2 + 2;
     m_2 <= m_2 + 1;
-    if(t_2 == 24) begin
+    if(t_2 == IMAGE_WIDTH-2) begin
         k_2 <= k_2 + 2;
         t_2 <= 0;
-        if(k_2 == 32) begin
+        if(k_2 == IMAGE_HEIGHT-2) begin
             k_2 <= 0;
             t_2 <= 0;
             m_2 <= 0;
@@ -620,10 +620,10 @@ if(state == 1) begin
     data_out_3[1][1] <= channel3[k_3+1][t_3+1];
     t_3 <= t_3 + 2;
     m_3 <= m_3 + 1;
-    if(t_3 == 24) begin
+    if(t_3 == IMAGE_WIDTH-2) begin
         k_3 <= k_3 + 2;
         t_3 <= 0;
-        if(k_3 == 32) begin
+        if(k_3 == IMAGE_HEIGHT-2) begin
             k_3 <= 0;
             t_3 <= 0;
             m_3 <= 0;
@@ -641,10 +641,10 @@ if(state == 1) begin
     data_out_4[1][1] <= channel4[k_4+1][t_4+1];
     t_4 <= t_4 + 2;
     m_4 <= m_4 + 1;
-    if(t_4 == 24) begin
+    if(t_4 == IMAGE_WIDTH-2) begin
         k_4 <= k_4 + 2;
         t_4 <= 0;
-        if(k_4 == 32) begin
+        if(k_4 == IMAGE_HEIGHT-2) begin
             k_4 <= 0;
             t_4 <= 0;
             m_4 <= 0;
@@ -662,10 +662,10 @@ if(state == 1) begin
     data_out_5[1][1] <= channel5[k_5+1][t_5+1];
     t_5 <= t_5 + 2;
     m_5 <= m_5 + 1;
-    if(t_5 == 24) begin
+    if(t_5 == IMAGE_WIDTH-2) begin
         k_5 <= k_5 + 2;
         t_5 <= 0;
-        if(k_5 == 32) begin
+        if(k_5 == IMAGE_HEIGHT-2) begin
             k_5 <= 0;
             t_5 <= 0;
             m_5 <= 0;
@@ -683,10 +683,10 @@ if(state == 1) begin
     data_out_6[1][1] <= channel6[k_6+1][t_6+1];
     t_6 <= t_6 + 2;
     m_6 <= m_6 + 1;
-    if(t_6 == 24) begin
+    if(t_6 == IMAGE_WIDTH-2) begin
         k_6 <= k_6 + 2;
         t_6 <= 0;
-        if(k_6 == 32) begin
+        if(k_6 == IMAGE_HEIGHT-2) begin
             k_6 <= 0;
             t_6 <= 0;
             m_6 <= 0;
@@ -704,10 +704,10 @@ if(state == 1) begin
     data_out_7[1][1] <= channel7[k_7+1][t_7+1];
     t_7 <= t_7 + 2;
     m_7 <= m_7 + 1;
-    if(t_7 == 24) begin
+    if(t_7 == IMAGE_WIDTH-2) begin
         k_7 <= k_7 + 2;
         t_7 <= 0;
-        if(k_7 == 32) begin
+        if(k_7 == IMAGE_HEIGHT-2) begin
             k_7 <= 0;
             t_7 <= 0;
             m_7 <= 0;
@@ -725,10 +725,10 @@ if(state == 1) begin
     data_out_8[1][1] <= channel8[k_8+1][t_8+1];
     t_8 <= t_8 + 2;
     m_8 <= m_8 + 1;
-    if(t_8 == 24) begin
+    if(t_8 == IMAGE_WIDTH-2) begin
         k_8 <= k_8 + 2;
         t_8 <= 0;
-        if(k_8 == 32) begin
+        if(k_8 == IMAGE_HEIGHT-2) begin
             k_8 <= 0;
             t_8 <= 0;
             m_8 <= 0;
@@ -746,10 +746,10 @@ if(state == 1) begin
     data_out_9[1][1] <= channel9[k_9+1][t_9+1];
     t_9 <= t_9 + 2;
     m_9 <= m_9 + 1;
-    if(t_9 == 24) begin
+    if(t_9 == IMAGE_WIDTH-2) begin
         k_9 <= k_9 + 2;
         t_9 <= 0;
-        if(k_9 == 32) begin
+        if(k_9 == IMAGE_HEIGHT-2) begin
             k_9 <= 0;
             t_9 <= 0;
             m_9 <= 0;
@@ -767,10 +767,10 @@ if(state == 1) begin
     data_out_10[1][1] <= channel10[k_10+1][t_10+1];
     t_10 <= t_10 + 2;
     m_10 <= m_10 + 1;
-    if(t_10 == 24) begin
+    if(t_10 == IMAGE_WIDTH-2) begin
         k_10 <= k_10 + 2;
         t_10 <= 0;
-        if(k_10 == 32) begin
+        if(k_10 == IMAGE_HEIGHT-2) begin
             k_10 <= 0;
             t_10 <= 0;
             m_10 <= 0;
@@ -788,10 +788,10 @@ if(state == 1) begin
     data_out_11[1][1] <= channel11[k_11+1][t_11+1];
     t_11 <= t_11 + 2;
     m_11 <= m_11 + 1;
-    if(t_11 == 24) begin
+    if(t_11 == IMAGE_WIDTH-2) begin
         k_11 <= k_11 + 2;
         t_11 <= 0;
-        if(k_11 == 32) begin
+        if(k_11 == IMAGE_HEIGHT-2) begin
             k_11 <= 0;
             t_11 <= 0;
             m_11 <= 0;
@@ -809,10 +809,10 @@ if(state == 1) begin
     data_out_12[1][1] <= channel12[k_12+1][t_12+1];
     t_12 <= t_12 + 2;
     m_12 <= m_12 + 1;
-    if(t_12 == 24) begin
+    if(t_12 == IMAGE_WIDTH-2) begin
         k_12 <= k_12 + 2;
         t_12 <= 0;
-        if(k_12 == 32) begin
+        if(k_12 == IMAGE_HEIGHT-2) begin
             k_12 <= 0;
             t_12 <= 0;
             m_12 <= 0;
@@ -830,10 +830,10 @@ if(state == 1) begin
     data_out_13[1][1] <= channel13[k_13+1][t_13+1];
     t_13 <= t_13 + 2;
     m_13 <= m_13 + 1;
-    if(t_13 == 24) begin
+    if(t_13 == IMAGE_WIDTH-2) begin
         k_13 <= k_13 + 2;
         t_13 <= 0;
-        if(k_13 == 32) begin
+        if(k_13 == IMAGE_HEIGHT-2) begin
             k_13 <= 0;
             t_13 <= 0;
             m_13 <= 0;
@@ -851,10 +851,10 @@ if(state == 1) begin
     data_out_14[1][1] <= channel14[k_14+1][t_14+1];
     t_14 <= t_14 + 2;
     m_14 <= m_14 + 1;
-    if(t_14 == 24) begin
+    if(t_14 == IMAGE_WIDTH-2) begin
         k_14 <= k_14 + 2;
         t_14 <= 0;
-        if(k_14 == 32) begin
+        if(k_14 == IMAGE_HEIGHT-2) begin
             k_14 <= 0;
             t_14 <= 0;
             m_14 <= 0;
@@ -872,10 +872,10 @@ if(state == 1) begin
     data_out_15[1][1] <= channel15[k_15+1][t_15+1];
     t_15 <= t_15 + 2;
     m_15 <= m_15 + 1;
-    if(t_15 == 24) begin
+    if(t_15 == IMAGE_WIDTH-2) begin
         k_15 <= k_15 + 2;
         t_15 <= 0;
-        if(k_15 == 32) begin
+        if(k_15 == IMAGE_HEIGHT-2) begin
             k_15 <= 0;
             t_15 <= 0;
             m_15 <= 0;
@@ -893,10 +893,10 @@ if(state == 1) begin
     data_out_16[1][1] <= channel16[k_16+1][t_16+1];
     t_16 <= t_16 + 2;
     m_16 <= m_16 + 1;
-    if(t_16 == 24) begin
+    if(t_16 == IMAGE_WIDTH-2) begin
         k_16 <= k_16 + 2;
         t_16 <= 0;
-        if(k_16 == 32) begin
+        if(k_16 == IMAGE_HEIGHT-2) begin
             k_16 <= 0;
             t_16 <= 0;
             m_16 <= 0;
@@ -914,10 +914,10 @@ if(state == 1) begin
     data_out_17[1][1] <= channel17[k_17+1][t_17+1];
     t_17 <= t_17 + 2;
     m_17 <= m_17 + 1;
-    if(t_17 == 24) begin
+    if(t_17 == IMAGE_WIDTH-2) begin
         k_17 <= k_17 + 2;
         t_17 <= 0;
-        if(k_17 == 32) begin
+        if(k_17 == IMAGE_HEIGHT-2) begin
             k_17 <= 0;
             t_17 <= 0;
             m_17 <= 0;
@@ -935,10 +935,10 @@ if(state == 1) begin
     data_out_18[1][1] <= channel18[k_18+1][t_18+1];
     t_18 <= t_18 + 2;
     m_18 <= m_18 + 1;
-    if(t_18 == 24) begin
+    if(t_18 == IMAGE_WIDTH-2) begin
         k_18 <= k_18 + 2;
         t_18 <= 0;
-        if(k_18 == 32) begin
+        if(k_18 == IMAGE_HEIGHT-2) begin
             k_18 <= 0;
             t_18 <= 0;
             m_18 <= 0;
@@ -956,10 +956,10 @@ if(state == 1) begin
     data_out_19[1][1] <= channel19[k_19+1][t_19+1];
     t_19 <= t_19 + 2;
     m_19 <= m_19 + 1;
-    if(t_19 == 24) begin
+    if(t_19 == IMAGE_WIDTH-2) begin
         k_19 <= k_19 + 2;
         t_19 <= 0;
-        if(k_19 == 32) begin
+        if(k_19 == IMAGE_HEIGHT-2) begin
             k_19 <= 0;
             t_19 <= 0;
             m_19 <= 0;
@@ -977,10 +977,10 @@ if(state == 1) begin
     data_out_20[1][1] <= channel20[k_20+1][t_20+1];
     t_20 <= t_20 + 2;
     m_20 <= m_20 + 1;
-    if(t_20 == 24) begin
+    if(t_20 == IMAGE_WIDTH-2) begin
         k_20 <= k_20 + 2;
         t_20 <= 0;
-        if(k_20 == 32) begin
+        if(k_20 == IMAGE_HEIGHT-2) begin
             k_20 <= 0;
             t_20 <= 0;
             m_20 <= 0;
@@ -998,10 +998,10 @@ if(state == 1) begin
     data_out_21[1][1] <= channel21[k_21+1][t_21+1];
     t_21 <= t_21 + 2;
     m_21 <= m_21 + 1;
-    if(t_21 == 24) begin
+    if(t_21 == IMAGE_WIDTH-2) begin
         k_21 <= k_21 + 2;
         t_21 <= 0;
-        if(k_21 == 32) begin
+        if(k_21 == IMAGE_HEIGHT-2) begin
             k_21 <= 0;
             t_21 <= 0;
             m_21 <= 0;
@@ -1019,10 +1019,10 @@ if(state == 1) begin
     data_out_22[1][1] <= channel22[k_22+1][t_22+1];
     t_22 <= t_22 + 2;
     m_22 <= m_22 + 1;
-    if(t_22 == 24) begin
+    if(t_22 == IMAGE_WIDTH-2) begin
         k_22 <= k_22 + 2;
         t_22 <= 0;
-        if(k_22 == 32) begin
+        if(k_22 == IMAGE_HEIGHT-2) begin
             k_22 <= 0;
             t_22 <= 0;
             m_22 <= 0;
@@ -1040,10 +1040,10 @@ if(state == 1) begin
     data_out_23[1][1] <= channel23[k_23+1][t_23+1];
     t_23 <= t_23 + 2;
     m_23 <= m_23 + 1;
-    if(t_23 == 24) begin
+    if(t_23 == IMAGE_WIDTH-2) begin
         k_23 <= k_23 + 2;
         t_23 <= 0;
-        if(k_23 == 32) begin
+        if(k_23 == IMAGE_HEIGHT-2) begin
             k_23 <= 0;
             t_23 <= 0;
             m_23 <= 0;
@@ -1061,10 +1061,10 @@ if(state == 1) begin
     data_out_24[1][1] <= channel24[k_24+1][t_24+1];
     t_24 <= t_24 + 2;
     m_24 <= m_24 + 1;
-    if(t_24 == 24) begin
+    if(t_24 == IMAGE_WIDTH-2) begin
         k_24 <= k_24 + 2;
         t_24 <= 0;
-        if(k_24 == 32) begin
+        if(k_24 == IMAGE_HEIGHT-2) begin
             k_24 <= 0;
             t_24 <= 0;
             m_24 <= 0;
@@ -1082,10 +1082,10 @@ if(state == 1) begin
     data_out_25[1][1] <= channel25[k_25+1][t_25+1];
     t_25 <= t_25 + 2;
     m_25 <= m_25 + 1;
-    if(t_25 == 24) begin
+    if(t_25 == IMAGE_WIDTH-2) begin
         k_25 <= k_25 + 2;
         t_25 <= 0;
-        if(k_25 == 32) begin
+        if(k_25 == IMAGE_HEIGHT-2) begin
             k_25 <= 0;
             t_25 <= 0;
             m_25 <= 0;
@@ -1103,10 +1103,10 @@ if(state == 1) begin
     data_out_26[1][1] <= channel26[k_26+1][t_26+1];
     t_26 <= t_26 + 2;
     m_26 <= m_26 + 1;
-    if(t_26 == 24) begin
+    if(t_26 == IMAGE_WIDTH-2) begin
         k_26 <= k_26 + 2;
         t_26 <= 0;
-        if(k_26 == 32) begin
+        if(k_26 == IMAGE_HEIGHT-2) begin
             k_26 <= 0;
             t_26 <= 0;
             m_26 <= 0;
@@ -1124,10 +1124,10 @@ if(state == 1) begin
     data_out_27[1][1] <= channel27[k_27+1][t_27+1];
     t_27 <= t_27 + 2;
     m_27 <= m_27 + 1;
-    if(t_27 == 24) begin
+    if(t_27 == IMAGE_WIDTH-2) begin
         k_27 <= k_27 + 2;
         t_27 <= 0;
-        if(k_27 == 32) begin
+        if(k_27 == IMAGE_HEIGHT-2) begin
             k_27 <= 0;
             t_27 <= 0;
             m_27 <= 0;
@@ -1145,10 +1145,10 @@ if(state == 1) begin
     data_out_28[1][1] <= channel28[k_28+1][t_28+1];
     t_28 <= t_28 + 2;
     m_28 <= m_28 + 1;
-    if(t_28 == 24) begin
+    if(t_28 == IMAGE_WIDTH-2) begin
         k_28 <= k_28 + 2;
         t_28 <= 0;
-        if(k_28 == 32) begin
+        if(k_28 == IMAGE_HEIGHT-2) begin
             k_28 <= 0;
             t_28 <= 0;
             m_28 <= 0;
@@ -1166,10 +1166,10 @@ if(state == 1) begin
     data_out_29[1][1] <= channel29[k_29+1][t_29+1];
     t_29 <= t_29 + 2;
     m_29 <= m_29 + 1;
-    if(t_29 == 24) begin
+    if(t_29 == IMAGE_WIDTH-2) begin
         k_29 <= k_29 + 2;
         t_29 <= 0;
-        if(k_29 == 32) begin
+        if(k_29 == IMAGE_HEIGHT-2) begin
             k_29 <= 0;
             t_29 <= 0;
             m_29 <= 0;
@@ -1187,10 +1187,10 @@ if(state == 1) begin
     data_out_30[1][1] <= channel30[k_30+1][t_30+1];
     t_30 <= t_30 + 2;
     m_30 <= m_30 + 1;
-    if(t_30 == 24) begin
+    if(t_30 == IMAGE_WIDTH-2) begin
         k_30 <= k_30 + 2;
         t_30 <= 0;
-        if(k_30 == 32) begin
+        if(k_30 == IMAGE_HEIGHT-2) begin
             k_30 <= 0;
             t_30 <= 0;
             m_30 <= 0;
@@ -1208,10 +1208,10 @@ if(state == 1) begin
     data_out_31[1][1] <= channel31[k_31+1][t_31+1];
     t_31 <= t_31 + 2;
     m_31 <= m_31 + 1;
-    if(t_31 == 24) begin
+    if(t_31 == IMAGE_WIDTH-2) begin
         k_31 <= k_31 + 2;
         t_31 <= 0;
-        if(k_31 == 32) begin
+        if(k_31 == IMAGE_HEIGHT-2) begin
             k_31 <= 0;
             t_31 <= 0;
             m_31 <= 0;
@@ -1229,10 +1229,10 @@ if(state == 1) begin
     data_out_32[1][1] <= channel32[k_32+1][t_32+1];
     t_32 <= t_32 + 2;
     m_32 <= m_32 + 1;
-    if(t_32 == 24) begin
+    if(t_32 == IMAGE_WIDTH-2) begin
         k_32 <= k_32 + 2;
         t_32 <= 0;
-        if(k_32 == 32) begin
+        if(k_32 == IMAGE_HEIGHT-2) begin
             k_32 <= 0;
             t_32 <= 0;
             m_32 <= 0;
@@ -1245,8 +1245,8 @@ end
 
 
     
-  end//else 0begin(rst_n == 1)  
-end//always
+  end  
+end
 
 endmodule        
     
