@@ -524,7 +524,8 @@ always @(posedge clk or negedge rst_n) begin
     end 
     else begin
 // Channel 1
-    if(state == 0 && valid_in) begin 
+    if(state == 0) begin
+        if(valid_in) begin
      
             channel1[i][j] <= data_in[0];
             channel2[i][j] <= data_in[1];
@@ -570,6 +571,7 @@ always @(posedge clk or negedge rst_n) begin
                 end
             end   
         end
+    end    
     // 1번째 채널
 if(state == 1) begin
     data_out_1[0][0] <= channel1[k][t];
