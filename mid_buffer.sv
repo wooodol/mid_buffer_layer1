@@ -219,7 +219,6 @@ output reg state
 
 integer i,j;
 
-reg state_zero;
 
 // Integer 및 reg 신호 선언
 integer k, t;
@@ -328,7 +327,7 @@ always @(posedge clk or negedge rst_n) begin
         i <= 0;
         j <= 0;
         valid_out <= 0;
-        state_zero <= 0;
+        
             // 첫 번째 신호 그룹
     k <= 0;
     t <= 0;
@@ -577,11 +576,6 @@ always @(posedge clk or negedge rst_n) begin
         end
     end    
     
-if(state_zero) begin
-    valid_out <= 0;
-    state_zero <= 0;
-end
-    
     // 1번째 채널
 if(state == 1) begin
     data_out_1[0][0] <= channel1[k][t];
@@ -600,7 +594,7 @@ if(state == 1) begin
             m <= 0;
             state <= 0; 
             y <= 1;
-            state_zero <= 1;         
+            valid_out <= 0;         
         end
     end
 end
