@@ -179,7 +179,7 @@ always @(posedge clk) begin
             data_in[i] = $urandom; 
         end
         o <= o + 1;
-        if(o == 884)begin
+        if(o == 883)begin
             valid_in <= 0;
             o <= 0;
         end                 
