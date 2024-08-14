@@ -218,7 +218,7 @@ output reg state
 
 
 integer i,j;
-
+reg delay;
 
 // Integer 및 reg 신호 선언
 integer k, t;
@@ -524,6 +524,7 @@ always @(posedge clk or negedge rst_n) begin
     state_32 <= 0;
     y_32 <= 0;
 
+delay <= 0;
     end 
     else begin
 // Channel 1
@@ -575,6 +576,9 @@ always @(posedge clk or negedge rst_n) begin
             end   
         end
     end    
+ if(delay) begin
+     valid_out <= 0;
+ end
     
     // 1번째 채널
 if(state == 1) begin
@@ -594,9 +598,11 @@ if(state == 1) begin
             m <= 0;
             state <= 0; 
             y <= 1;
-            valid_out <= 0;         
+            delay <= 1;
+         
         end
     end
+    
 end
 
 // 2번째 채널
@@ -1258,4 +1264,3 @@ end
 
 endmodule        
     
-
