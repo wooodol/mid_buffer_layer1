@@ -115,208 +115,205 @@ output reg [31:0] data_out_32 [0:1][0:1],
 
     
     // 첫 번째 신호 그룹
-output integer y,
+output reg [10:0] y,
 output reg [10:0] m,
 
 // 두 번째 그룹
-output integer y_2,
+output reg [10:0] y_2,
 output reg [10:0] m_2,
 
 // 세 번째 그룹
-output integer y_3,
+output reg [10:0] y_3,
 output reg [10:0] m_3,
 
 // 추가 신호 그룹 (4번째 ~ 32번째 그룹)
-output integer y_4,
+output reg [10:0] y_4,
 output reg [10:0] m_4,
 
-output integer y_5,
+output reg [10:0] y_5,
 output reg [10:0] m_5,
 
-output integer y_6,
+output reg [10:0] y_6,
 output reg [10:0] m_6,
 
-output integer y_7,
+output reg [10:0] y_7,
 output reg [10:0] m_7,
 
-output integer y_8,
+output reg [10:0] y_8,
 output reg [10:0] m_8,
 
-output integer y_9,
+output reg [10:0] y_9,
 output reg [10:0] m_9,
 
-output integer y_10,
+output reg [10:0] y_10,
 output reg [10:0] m_10,
 
-output integer y_11,
+output reg [10:0] y_11,
 output reg [10:0] m_11,
 
-output integer y_12,
+output reg [10:0] y_12,
 output reg [10:0] m_12,
 
-output integer y_13,
+output reg [10:0] y_13,
 output reg [10:0] m_13,
 
-output integer y_14,
+output reg [10:0] y_14,
 output reg [10:0] m_14,
 
-output integer y_15,
+output reg [10:0] y_15,
 output reg [10:0] m_15,
 
-output integer y_16,
+output reg [10:0] y_16,
 output reg [10:0] m_16,
 
-output integer y_17,
+output reg [10:0] y_17,
 output reg [10:0] m_17,
 
-output integer y_18,
+output reg [10:0] y_18,
 output reg [10:0] m_18,
 
-output integer y_19,
+output reg [10:0] y_19,
 output reg [10:0] m_19,
 
-output integer y_20,
+output reg [10:0] y_20,
 output reg [10:0] m_20,
 
-output integer y_21,
+output reg [10:0] y_21,
 output reg [10:0] m_21,
 
-output integer y_22,
+output reg [10:0] y_22,
 output reg [10:0] m_22,
 
-output integer y_23,
+output reg [10:0] y_23,
 output reg [10:0] m_23,
 
-output integer y_24,
+output reg [10:0] y_24,
 output reg [10:0] m_24,
 
-output integer y_25,
+output reg [10:0] y_25,
 output reg [10:0] m_25,
 
-output integer y_26,
+output reg [10:0] y_26,
 output reg [10:0] m_26,
 
-output integer y_27,
+output reg [10:0] y_27,
 output reg [10:0] m_27,
 
-output integer y_28,
+output reg [10:0] y_28,
 output reg [10:0] m_28,
 
-output integer y_29,
+output reg [10:0] y_29,
 output reg [10:0] m_29,
 
-output integer y_30,
+output reg [10:0] y_30,
 output reg [10:0] m_30,
 
-output integer y_31,
+output reg [10:0] y_31,
 output reg [10:0] m_31,
 
-output integer y_32,
+output reg [10:0] y_32,
 output reg [10:0] m_32,
 output reg state
    );
 
 
-integer i,j;
+reg [10:0] i,j;
 reg delay;
 
-// Integer 및 reg 신호 선언
-integer k, t;
 
-// 두 번째 그룹
-integer k_2, t_2;
+reg [10:0] k, t;
+
+reg [10:0] k_2, t_2;
 reg state_32;
 
-// 세 번째 그룹
-integer k_3, t_3;
+reg [10:0] k_3, t_3;
 reg state_2;
 
-// 추가 신호 그룹 (4번째 ~ 32번째 그룹)
-integer k_4, t_4;
+reg [10:0] k_4, t_4;
 reg state_3;
 
-integer k_5, t_5;
+reg [10:0] k_5, t_5;
 reg state_4;
 
-integer k_6, t_6;
+reg [10:0] k_6, t_6;
 reg state_5;
 
-integer k_7, t_7;
+reg [10:0] k_7, t_7;
 reg state_6;
 
-integer k_8, t_8;
+reg [10:0] k_8, t_8;
 reg state_7;
 
-integer k_9, t_9;
+reg [10:0] k_9, t_9;
 reg state_8;
 
-integer k_10, t_10;
+reg [10:0] k_10, t_10;
 reg state_9;
 
-integer k_11, t_11;
+reg [10:0] k_11, t_11;
 reg state_10;
 
-integer k_12, t_12;
+reg [10:0] k_12, t_12;
 reg state_11;
 
-integer k_13, t_13;
+reg [10:0] k_13, t_13;
 reg state_12;
 
-integer k_14, t_14;
+reg [10:0] k_14, t_14;
 reg state_13;
 
-integer k_15, t_15;
+reg [10:0] k_15, t_15;
 reg state_14;
 
-integer k_16, t_16;
+reg [10:0] k_16, t_16;
 reg state_15;
 
-integer k_17, t_17;
+reg [10:0] k_17, t_17;
 reg state_16;
 
-integer k_18, t_18;
+reg [10:0] k_18, t_18;
 reg state_17;
 
-integer k_19, t_19;
+reg [10:0] k_19, t_19;
 reg state_18;
 
-integer k_20, t_20;
+reg [10:0] k_20, t_20;
 reg state_19;
 
-integer k_21, t_21;
+reg [10:0] k_21, t_21;
 reg state_20;
 
-integer k_22, t_22;
+reg [10:0] k_22, t_22;
 reg state_21;
 
-integer k_23, t_23;
+reg [10:0] k_23, t_23;
 reg state_22;
 
-integer k_24, t_24;
+reg [10:0] k_24, t_24;
 reg state_23;
 
-integer k_25, t_25;
+reg [10:0] k_25, t_25;
 reg state_24;
 
-integer k_26, t_26;
+reg [10:0] k_26, t_26;
 reg state_25;
 
-integer k_27, t_27;
+reg [10:0] k_27, t_27;
 reg state_26;
 
-integer k_28, t_28;
+reg [10:0] k_28, t_28;
 reg state_27;
 
-integer k_29, t_29;
+reg [10:0] k_29, t_29;
 reg state_28;
 
-integer k_30, t_30;
+reg [10:0] k_30, t_30;
 reg state_29;
 
-integer k_31, t_31;
+reg [10:0] k_31, t_31;
 reg state_30;
 
-integer k_32, t_32;
+reg [10:0] k_32, t_32;
 reg state_31;
 
 
@@ -1254,12 +1251,8 @@ if(state == 1) begin
             y_32 <= 1;         
         end
     end
-end
-
-
-
-    
-  end  
+end 
+end  
 end
 
 endmodule        
